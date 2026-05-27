@@ -305,30 +305,20 @@ header::after{display:none;}
 <div class="video-embed-sec" id="video-embed">
 <div class="video-embed-hd">
 <span>VIDEO EMBED · FINAL CUT</span>
-<span class="mk-badge">MP4 / WEBM</span>
+<span class="mk-badge">MP4</span>
 </div>
-<div class="video-embed-body">
-<div class="placeholder-icon" id="video-placeholder" style="display:none;">
-<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-</div>
-<div class="placeholder-title" id="video-placeholder-title" style="display:none;">Kampagnen-Video</div>
-<div class="placeholder-desc" id="video-placeholder-desc" style="display:none;">
-Füge hier dein fertiges Kampagnen-Video ein. Unterstützte Formate: MP4 (H.264), WebM (VP9).<br>
-Empfohlene Auflösung: 1080×1920 (9:16) für Reels oder 1080×1350 (4:5) für Feed.
-</div>
-<button class="placeholder-cta" onclick="document.getElementById('video-upload').click()" style="display:none;">Video hochladen</button>
-<input type="file" id="video-upload" accept="video/mp4,video/webm" style="display:none" onchange="handleVideoUpload(this)">
-
-<!-- Using video-poster.mp4 as the campaign video source -->
-<video id="campaign-video" class="active" controls autoplay muted loop playsinline preload="metadata" style="display:block !important;">
+<div class="video-embed-body" style="padding:0;">
+<video id="campaign-video" controls autoplay muted loop playsinline preload="auto" style="width:100%;max-width:720px;min-height:400px;display:block;background:#0a0a0c;border-radius:6px;">
 <source src="assets/video-poster.mp4" type="video/mp4">
-<p>Ihr Browser unterstützt das Video-Format nicht. Bitte aktualisieren Sie Ihren Browser.</p>
+<p style="color:#666;text-align:center;padding:60px 24px;">
+<strong style="color:#c8a55a;">Video nicht verfügbar</strong><br><br>
+Stelle sicher, dass <code>assets/video-poster.mp4</code> im gleichen Ordner wie diese HTML-Datei liegt.
+</p>
 </video>
-
-<div class="video-controls active" id="video-controls">
-<button onclick="togglePlay()">PLAY / PAUSE</button>
-<div class="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
-<button onclick="toggleMute()">MUTE</button>
+<div class="video-controls" id="video-controls" style="display:flex;align-items:center;gap:12px;width:100%;max-width:720px;margin-top:12px;padding:0 24px 24px;">
+<button onclick="togglePlay()" style="background:transparent;border:1px solid #1e1e22;color:#c8a55a;padding:6px 14px;border-radius:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;cursor:pointer;">PLAY / PAUSE</button>
+<div class="progress-bar" style="flex:1;height:3px;background:#1e1e22;border-radius:2px;overflow:hidden;"><div class="progress-bar-fill" id="progress-fill" style="height:100%;width:0%;background:linear-gradient(to right,#c8a55a,#e0c07a);border-radius:2px;transition:width 0.1s linear;"></div></div>
+<button onclick="toggleMute()" style="background:transparent;border:1px solid #1e1e22;color:#c8a55a;padding:6px 14px;border-radius:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;cursor:pointer;">MUTE</button>
 </div>
 </div>
 </div>
@@ -537,6 +527,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Also handle loadedmetadata to set initial state
+function initVideo() {
+  const video = document.getElementById('campaign-video');
+  if (video) {
+    video.play().catch(function(e) {
+      console.log('Autoplay prevented:', e);
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded', initVideo);
 
 function togglePlay() {
   const video = document.getElementById('campaign-video');

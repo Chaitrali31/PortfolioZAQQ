@@ -308,24 +308,24 @@ header::after{display:none;}
 <span class="mk-badge">MP4 / WEBM</span>
 </div>
 <div class="video-embed-body">
-<div class="placeholder-icon" id="video-placeholder">
+<div class="placeholder-icon" id="video-placeholder" style="display:none;">
 <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
 </div>
-<div class="placeholder-title" id="video-placeholder-title">Kampagnen-Video</div>
-<div class="placeholder-desc" id="video-placeholder-desc">
+<div class="placeholder-title" id="video-placeholder-title" style="display:none;">Kampagnen-Video</div>
+<div class="placeholder-desc" id="video-placeholder-desc" style="display:none;">
 Füge hier dein fertiges Kampagnen-Video ein. Unterstützte Formate: MP4 (H.264), WebM (VP9).<br>
 Empfohlene Auflösung: 1080×1920 (9:16) für Reels oder 1080×1350 (4:5) für Feed.
 </div>
-<button class="placeholder-cta" onclick="document.getElementById('video-upload').click()">Video hochladen</button>
+<button class="placeholder-cta" onclick="document.getElementById('video-upload').click()" style="display:none;">Video hochladen</button>
 <input type="file" id="video-upload" accept="video/mp4,video/webm" style="display:none" onchange="handleVideoUpload(this)">
 
 <!-- Using video-poster.mp4 as the campaign video source -->
-<video id="campaign-video" controls preload="metadata">
+<video id="campaign-video" class="active" controls autoplay muted loop playsinline preload="metadata" style="display:block !important;">
 <source src="assets/video-poster.mp4" type="video/mp4">
 <p>Ihr Browser unterstützt das Video-Format nicht. Bitte aktualisieren Sie Ihren Browser.</p>
 </video>
 
-<div class="video-controls" id="video-controls">
+<div class="video-controls active" id="video-controls">
 <button onclick="togglePlay()">PLAY / PAUSE</button>
 <div class="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
 <button onclick="toggleMute()">MUTE</button>
@@ -523,6 +523,20 @@ function handleVideoUpload(input) {
     document.getElementById('progress-fill').style.width = progress + '%';
   });
 }
+
+// Initialize progress bar for preloaded video
+document.addEventListener('DOMContentLoaded', function() {
+  const preloadedVideo = document.getElementById('campaign-video');
+  const progressFill = document.getElementById('progress-fill');
+  if (preloadedVideo && progressFill) {
+    preloadedVideo.addEventListener('timeupdate', function() {
+      if (preloadedVideo.duration) {
+        const progress = (preloadedVideo.currentTime / preloadedVideo.duration) * 100;
+        progressFill.style.width = progress + '%';
+      }
+    });
+  }
+});
 
 function togglePlay() {
   const video = document.getElementById('campaign-video');

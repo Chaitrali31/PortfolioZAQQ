@@ -32,7 +32,7 @@ main{max-width:1080px;margin:0 auto;padding:72px 64px;}
 .mk{border:1px solid #1e1e22;border-radius:10px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
 .mk-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;background:#111114;border-bottom:1px solid #1e1e22;}
 .mk-bar span{font-family:'DM Mono',monospace;font-size:9px;color:#484848;letter-spacing:.1em;}
-.mk-badge{background:rgba(200,165,90,.1);color:#c8a55a;border:1px solid rgba(200,165,90,.18);border-radius:2px;padding:2px 8px;font-size:9px;letter-spacing:.06em;}
+.mk-badge{background:rgba(240,230,200,.35);color:#b8953a;border:1px solid rgba(240,230,200,.5);border-radius:2px;padding:2px 8px;font-size:9px;letter-spacing:.06em;}
 .ig-bar{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;border-bottom:1px solid #f0f0f0;}
 .ig-av{width:36px;height:36px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#c8a55a;flex-shrink:0;letter-spacing:.05em;}
 .ig-name{font-size:13px;font-weight:600;color:#111;line-height:1.3;}
@@ -64,7 +64,7 @@ main{max-width:1080px;margin:0 auto;padding:72px 64px;}
 /* ── VIDEO STORYBOARD ── */
 .vid-wrap{margin-top:28px;border:1px solid #1e1e22;border-radius:10px;overflow:hidden;}
 .vid-header{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;background:#111114;border-bottom:1px solid #1e1e22;}
-.vid-header span{font-family:'DM Mono',monospace;font-size:9px;color:#c8a55a;letter-spacing:.12em;}
+.vid-header span{font-family:'DM Mono',monospace;font-size:9px;color:#d4b86a;letter-spacing:.12em;}
 .vid-screen{position:relative;height:300px;overflow:hidden;background:#0d130a;}
 /* FIX 1: vid-screen now uses <video> instead of <img> */
 .vid-screen video{width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:brightness(.45);display:block;}
@@ -85,7 +85,7 @@ main{max-width:1080px;margin:0 auto;padding:72px 64px;}
 /* ── VIDEO EMBED SECTION ── */
 .video-embed-sec{margin-top:28px;border:1px solid #1e1e22;border-radius:10px;overflow:hidden;}
 .video-embed-hd{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;background:#111114;border-bottom:1px solid #1e1e22;}
-.video-embed-hd span{font-family:'DM Mono',monospace;font-size:9px;color:#c8a55a;letter-spacing:.12em;}
+.video-embed-hd span{font-family:'DM Mono',monospace;font-size:9px;color:#d4b86a;letter-spacing:.12em;}
 .video-embed-body{position:relative;background:#0a0a0c;min-height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;}
 .video-embed-body .placeholder-icon{width:80px;height:80px;border-radius:50%;border:2px solid rgba(200,165,90,0.3);background:rgba(200,165,90,0.05);display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
 .video-embed-body .placeholder-icon svg{width:32px;height:32px;stroke:#c8a55a;fill:none;stroke-width:1.5;}
@@ -265,7 +265,7 @@ header::after{display:none;}
 <!-- VIDEO STORYBOARD -->
 <!-- FIX 1: <img> replaced with <video> for video-cover file -->
 <div class="vid-wrap">
-<div class="vid-header"><span>VIDEO STORYBOARD · 0:15 REEL</span><span class="mk-badge">4 SCENES</span></div>
+<div class="vid-header"><span>VIDEO STORYBOARD · 0:15 REEL</span><span class="mk-badge">4 SZENEN</span></div>
 <div class="vid-screen">
 <video src="assets/video-cover.mp4" autoplay muted loop playsinline></video>
 <div class="vgrad"></div>
@@ -304,7 +304,7 @@ header::after{display:none;}
 <!-- FIX 2: poster attribute removed — video-poster.mp4 is a video file, not an image -->
 <div class="video-embed-sec" id="video-embed">
 <div class="video-embed-hd">
-<span>VIDEO EMBED · FINAL CUT</span>
+<span>VIDEO-EMBED · FINALE VERSION</span>
 <span class="mk-badge">MP4</span>
 </div>
 <div class="video-embed-body" style="padding:0;">
@@ -316,9 +316,9 @@ Stelle sicher, dass <code>assets/video-poster.mp4</code> im gleichen Ordner wie 
 </p>
 </video>
 <div class="video-controls" id="video-controls" style="display:flex;align-items:center;gap:12px;width:100%;max-width:720px;margin-top:12px;padding:0 24px 24px;">
-<button onclick="togglePlay()" style="background:transparent;border:1px solid #1e1e22;color:#c8a55a;padding:6px 14px;border-radius:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;cursor:pointer;">PLAY / PAUSE</button>
+<button onclick="togglePlay()" style="background:transparent;border:1px solid #1e1e22;color:#c8a55a;padding:6px 14px;border-radius:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;cursor:pointer;">WIEDERGABE / PAUSE</button>
 <div class="progress-bar" style="flex:1;height:3px;background:#1e1e22;border-radius:2px;overflow:hidden;"><div class="progress-bar-fill" id="progress-fill" style="height:100%;width:0%;background:linear-gradient(to right,#c8a55a,#e0c07a);border-radius:2px;transition:width 0.1s linear;"></div></div>
-<button onclick="toggleMute()" style="background:transparent;border:1px solid #1e1e22;color:#c8a55a;padding:6px 14px;border-radius:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;cursor:pointer;">MUTE</button>
+<button onclick="toggleMute()" style="background:transparent;border:1px solid #1e1e22;color:#c8a55a;padding:6px 14px;border-radius:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;cursor:pointer;">STUMM</button>
 </div>
 </div>
 </div>

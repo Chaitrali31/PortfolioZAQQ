@@ -237,7 +237,7 @@ header::after{display:none;}
 <div class="ig-more">···</div>
 </div>
 <div class="reel-img">
-<img src="assets/reel-ad.jpg" alt="ZAQQ EXPEQ Black Waterproof - Instagram Reels Ad" loading="lazy">
+<video src="assets/video-cover.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;"></video>
 <div class="grad"></div>
 <div class="caption">
 <span class="cap-tag">REEL</span>
@@ -319,10 +319,9 @@ Empfohlene Auflösung: 1080×1920 (9:16) für Reels oder 1080×1350 (4:5) für F
 <button class="placeholder-cta" onclick="document.getElementById('video-upload').click()">Video hochladen</button>
 <input type="file" id="video-upload" accept="video/mp4,video/webm" style="display:none" onchange="handleVideoUpload(this)">
 
-<!-- FIX 2: poster attribute removed since video-poster.mp4 is a video, not an image -->
+<!-- Using video-poster.mp4 as the campaign video source -->
 <video id="campaign-video" controls preload="metadata">
-<source src="assets/campaign-video.mp4" type="video/mp4">
-<source src="assets/campaign-video.webm" type="video/webm">
+<source src="assets/video-poster.mp4" type="video/mp4">
 <p>Ihr Browser unterstützt das Video-Format nicht. Bitte aktualisieren Sie Ihren Browser.</p>
 </video>
 
